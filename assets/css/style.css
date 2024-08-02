@@ -23,16 +23,9 @@
 
   /* gradient */
 
-  --bg-gradient-onyx: linear-gradient(
-    to bottom right, 
-    hsl(240, 1%, 25%) 3%, 
-    hsl(0, 0%, 19%) 97%
-  );
-  --bg-gradient-jet: linear-gradient(
-    to bottom right, 
-    hsla(240, 1%, 18%, 0.251) 0%, 
-    hsla(240, 2%, 11%, 0) 100%
-  ), hsl(240, 2%, 13%);
+  --bg-gradient-onyx: linear-gradient(to bottom right, hsl(0deg 79.32% 72.47% / 96.6%) 0%, hsla(0, 94%, 51%, 0) 100%), hsl(0deg 18.58% 93.01%);
+  --bg-gradient-jet: linear-gradient(to bottom right, hsl(0deg 79.32% 72.47% / 96.6%) 0%, hsla(0, 94%, 51%, 0) 100%), hsl(0deg 18.58% 93.01%);
+  
   --bg-gradient-yellow-1: linear-gradient(
     to bottom right, 
     hsl(45, 100%, 71%) 0%, 
@@ -40,33 +33,39 @@
   );
   --bg-gradient-yellow-2: linear-gradient(
     135deg, 
-    hsla(45, 100%, 71%, 0.251) 0%, 
-    hsla(35, 100%, 68%, 0) 59.86%
+    hsla(355, 89%, 49%, 0.959) 0%, 
+    hsla(0, 87%, 76%, 0.969) 59.86%
   ), hsl(240, 2%, 13%);
   --border-gradient-onyx: linear-gradient(
     to bottom right, 
-    hsl(0, 0%, 25%) 0%, 
-    hsla(0, 0%, 25%, 0) 50%
+    hsl(0, 56%, 72%) 0%, 
+    hsla(0, 90%, 67%, 0.932) 50%
   );
   --text-gradient-yellow: linear-gradient(
     to right, 
-    hsl(45, 100%, 72%), 
-    hsl(35, 100%, 68%)
+    hsl(353, 95%, 49%), 
+    hsl(0, 58%, 77%)
   );
 
   /* solid */
 
-  --jet: hsl(0, 0%, 22%);
-  --onyx: hsl(240, 1%, 17%);
-  --eerie-black-1: hsl(240, 2%, 13%);
-  --eerie-black-2: hsl(240, 2%, 12%);
-  --smoky-black: hsl(0, 0%, 7%);
-  --white-1: hsl(0, 0%, 100%);
-  --white-2: hsl(0, 0%, 98%);
-  --orange-yellow-crayola: hsl(45, 100%, 72%);
-  --vegas-gold: hsl(45, 54%, 58%);
-  --light-gray: hsl(0, 0%, 84%);
-  --light-gray-70: hsla(0, 0%, 84%, 0.7);
+  --jet:  linear-gradient(
+    to bottom right, 
+    hsla(0, 76%, 50%, 0.473) 0%, 
+    hsla(0, 94%, 51%, 0) 100%
+  ), hsl(240, 2%, 13%);
+  
+  --onyx:  linear-gradient(to bottom right, hsl(0deg 79.32% 72.47% / 96.6%) 0%, hsla(0, 94%, 51%, 0) 100%), hsl(0deg 18.58% 93.01%);
+  --eerie-black-1: linear-gradient(to bottom right, hsla(0, 80%, 66%, 0.966) 0%, hsla(0, 17%, 94%, 0) 100%), hsl(0, 59%, 72%);
+
+  --eerie-black-2: hsl(0, 85%, 68%);
+  --smoky-black: hsl(0, 41%, 85%);
+  --white-1: hsl(0, 100%, 2%);
+  --white-2: hsl(0, 100%, 5%);
+  --orange-yellow-crayola: hsla(0, 100%, 0%, 0.98);
+  --vegas-gold: hsl(356, 87%, 22%);
+  --light-gray: f64a4a;
+  --light-gray-70: #f64a4a;
   --bittersweet-shimmer: hsl(0, 43%, 51%);
 
   /**
@@ -77,14 +76,14 @@
   --ff-poppins: 'Poppins', sans-serif;
 
   /* font-size */
-  --fs-1: 24px;
-  --fs-2: 18px;
-  --fs-3: 17px;
-  --fs-4: 16px;
-  --fs-5: 15px;
-  --fs-6: 14px;
-  --fs-7: 13px;
-  --fs-8: 11px;
+  --fs-1: 26px;
+  --fs-2: 20px;
+  --fs-3: 19px;
+  --fs-4: 18px;
+  --fs-5: 17px;
+  --fs-6: 16px;
+  --fs-7: 15px;
+  --fs-8: 13px;
 
   /* font-weight */
   --fw-300: 300;
@@ -167,7 +166,7 @@ body { background: var(--smoky-black); }
 
 .sidebar,
 article {
-  background: var(--eerie-black-2);
+  background: hsl(0deg 11.81% 82.1% / 39%);
   border: 1px solid var(--jet);
   border-radius: 20px;
   padding: 15px;
@@ -459,7 +458,11 @@ main {
   bottom: 0;
   left: 0;
   width: 100%;
-  background: hsla(240, 1%, 17%, 0.75);
+  background: linear-gradient(
+    135deg, 
+    hsla(355, 80%, 70%, 0.959) 0%, 
+    hsla(0, 59%, 82%, 0.969) 59.86%
+  ), hsl(240, 2%, 13%);
   backdrop-filter: blur(10px);
   border: 1px solid var(--jet);
   border-radius: 12px 12px 0 0;
@@ -529,6 +532,7 @@ main {
   border-radius: 14px;
   box-shadow: var(--shadow-2);
   z-index: 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .service-item::before {
@@ -538,7 +542,18 @@ main {
   background: var(--bg-gradient-jet);
   border-radius: inherit;
   z-index: -1;
+  transition: opacity 0.3s ease;
 }
+
+.service-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.service-item:hover::before {
+  opacity: 0.8;
+}
+
 
 .service-icon-box { margin-bottom: 10px; }
 
@@ -1803,7 +1818,7 @@ textarea.form-input::-webkit-resizer { display: none; }
    */
 
   main {
-    max-width: 1200px;
+    /* max-width: 1500px; */
     margin-inline: auto;
     display: flex;
     justify-content: center;
